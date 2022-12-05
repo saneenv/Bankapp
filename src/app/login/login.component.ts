@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,31 +18,14 @@ export class LoginComponent {
     1003:{acno:1003,usename:"ramesh",password:123}
 
   }
-  // login (){
-  //   // alert('login clicked')
-  //   var acno=this.acno
-  //   var pass=this.pass
-  //   var userDetails=this.userDetails
+  constructor(private router:Router) { }
 
-  //   if(acno in userDetails){
-  //     if(psw==userDetails[acno]["password"]){
-  //       alert('login success')
-  //     }
-  //     else{
-  //       alert('incorrect password')
-  //     }
-  //   }
-  //     else{
-  //       alert('incorrect username')
-  //     }
+  ngOnInit(): void{
 
-  //   }
-  // }
+  }
 
-  login (a:any,b:any){
+  login (){
     // alert('login clicked')
-    this.acno=a.value
-    this.psw=b.value
     var acno=this.acno
     var psw=this.psw
     var userDetails=this.userDetails
@@ -49,6 +33,7 @@ export class LoginComponent {
     if(acno in userDetails){
       if(psw==userDetails[acno]["password"]){
         alert('login success')
+        this.router.navigateByUrl('dashboard')
       }
       else{
         alert('incorrect password')
@@ -60,6 +45,8 @@ export class LoginComponent {
 
     }
   }
+
+  
 
 
 //   acnoChange(event:any){
