@@ -46,3 +46,12 @@ Html-View
  ng g s Servicename                       
                              
     
+Angular Dierectives
+--------------------
+
+1-structural Dierectives -  to handle structured datas in view of a component
+
+    -ngfor - can directly apply in html to access elements from array
+    
+
+
