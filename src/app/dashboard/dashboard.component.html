@@ -13,20 +13,32 @@
                         <div class="login_topimg">
                         </div>
                         <div class="wrap-login100">
-                            <form (ngSubmit)="deposit()" class="login100-form validate-form"> <span class="login100-form-title ">Deposit</span> <span class="login100-form-subtitle m-b-16">  </span>
-                                <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Number" id="acno" placeholder="account number"  [(ngModel)]="acno" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
-                                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="password" placeholder="Password" id="psw"  [(ngModel)]="psw"> <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
-                                <div class="wrap-input100 validate-input m-b-16" data-validate="Amount is required"> <input class="input100" type="number"  name="Amount" id="amnt" placeholder="Amount" [(ngModel)]="amnt" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                            <form (ngSubmit)="deposit()" [formGroup]="depositForm" class="login100-form validate-form"> <span class="login100-form-title ">Deposit</span> <span class="login100-form-subtitle m-b-16">  </span>
+                                <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Number" id="acno" placeholder="account number"  formControlName="acno" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                <div style="color: red;" *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched "><p class="text-dander">invalid account Number</p></div>
+
+                                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="password" placeholder="Password" id="psw"  formControlName="psw"> <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
+                                <div style="color: red;" *ngIf="this.depositForm.get('psw')?.errors && this.depositForm.get('psw')?.touched "><p class="text-dander">invalid password</p></div>
+
+                                <div class="wrap-input100 validate-input m-b-16" data-validate="Amount is required"> <input class="input100" type="number"  name="Amount" id="amnt" placeholder="Amount" formControlName="amnt" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                <div style="color: red;" *ngIf="this.depositForm.get('amnt')?.errors && this.depositForm.get('amnt')?.touched "><p class="text-dander">invalid Amount</p></div>
+
 
                                     
                     
                                 <div class="container-login100-form-btn p-t-25"> <button type="submit"  class="login100-form-btn">Deposit</button>  </div>
                             </form>
                             <div class="wrap-login100">
-                                <form (ngSubmit)="withdraw()" class="login100-form validate-form"> <span class="login100-form-title ">Withdraw</span> <span class="login100-form-subtitle m-b-16">  </span>
-                                    <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Num" id="acnum" placeholder="account number" [(ngModel)]="acnum"  > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
-                                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="paswrd" placeholder="Password" id="pswrd" [(ngModel)]="pswrd" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
-                                    <div class="wrap-input100 validate-input m-b-16" data-validate="Amount is required"> <input class="input100" type="number"  name="Amont" id="amont" placeholder="Amount" [(ngModel)]="amont" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                <form (ngSubmit)="withdraw()" [formGroup]="withdrawForm" class="login100-form validate-form"> <span class="login100-form-title ">Withdraw</span> <span class="login100-form-subtitle m-b-16">  </span>
+                                    <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Num" id="acnum" placeholder="account number" formControlName="acnum"  > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                    <div style="color: red;" *ngIf="this.withdrawForm.get('acnum')?.errors && this.withdrawForm.get('acnum')?.touched "><p class="text-dander">invalid account number</p></div>
+
+                                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="paswrd" placeholder="Password" id="pswrd" formControlName="pswrd" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
+                                    <div style="color: red;" *ngIf="this.withdrawForm.get('pswrd')?.errors && this.withdrawForm.get('pswrd')?.touched "><p class="text-dander">invalid password</p></div>
+
+                                    <div class="wrap-input100 validate-input m-b-16" data-validate="Amount is required"> <input class="input100" type="number"  name="Amont" id="amont" placeholder="Amount" formControlName="amont" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                    <div style="color: red;" *ngIf="this.withdrawForm.get('amont')?.errors && this.withdrawForm.get('amont')?.touched "><p class="text-dander">invalid Amount</p></div>
+
     
                                         
                         

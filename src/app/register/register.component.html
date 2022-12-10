@@ -8,10 +8,15 @@
                         <div class="login_topimg">
                         </div>
                         <div class="wrap-login100">
-                            <form  (ngSubmit)="register()" class="login100-form validate-form"> <span class="login100-form-title ">Registration Form</span> <span class="login100-form-subtitle m-b-16">  </span>
-                                <div class="wrap-input100 validate-input m-b-16" data-validate="Valid username is required"> <input class="input100" type="text"  name="username" id="uname" placeholder="username" [(ngModel)]="uname" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
-                                <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Number" id="acno" placeholder="account number"  [(ngModel)]="acno" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
-                                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="password" placeholder="Password" id="psw"  [(ngModel)]="psw"> <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
+                            <form  (ngSubmit)="register()" [formGroup]="registerForm" class="login100-form validate-form"> <span class="login100-form-title ">Registration Form</span> <span class="login100-form-subtitle m-b-16">  </span>
+                                <div class="wrap-input100 validate-input m-b-16" data-validate="Valid username is required"> <input class="input100" type="text"  name="username" id="uname" placeholder="username" formControlName="uname"  > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                <div style="color: red;" *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched "><p class="text-dander">incorrect username</p></div>
+                                <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Number" id="acno" placeholder="account number" formControlName="acno" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                                <div style="color: red;" *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched "><p class="text-dander">incorrect account number</p></div>
+
+                                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="password" placeholder="Password" id="psw" formControlName="psw"  > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
+                                <div  style="color: red;" *ngIf="this.registerForm.get('psw')?.errors && this.registerForm.get('psw')?.touched "><p class="text-dander">incorrect password</p></div>
+
                                 
                                     
                     

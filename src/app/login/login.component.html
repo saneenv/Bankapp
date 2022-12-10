@@ -9,9 +9,13 @@
                     <div class="login_topimg">
                     </div>
                     <div class="wrap-login100">
-                        <form (ngSubmit)="login()" class="login100-form validate-form"> <span class="login100-form-title "> Login </span> <span class="login100-form-subtitle m-b-16"> to your account </span>
-                            <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Number" id="acno" [placeholder]="data" [(ngModel)]="acno" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
-                            <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="pass" placeholder="Password" id="psw"  [(ngModel)]="psw"> <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
+                        <form (ngSubmit)="login()" [formGroup]="loginForm" class="login100-form validate-form"> <span class="login100-form-title "> Login </span> <span class="login100-form-subtitle m-b-16"> to your account </span>
+                            <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz"> <input class="input100" type="text"  name="Account Number" id="acno" [placeholder]="data" formControlName="acno" > <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-user"></span> </span> </div>
+                            <div style="color: red;" *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched "><p class="text-dander">invalid account number</p></div>
+
+                            <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required"> <input class="input100" type="password" name="pass" placeholder="Password" id="psw"  formControlName="psw"> <span class="focus-input100"></span> <span class="symbol-input100"> <span class="glyphicon glyphicon-lock"></span> </span> </div>
+                            <div style="color: red;" *ngIf="this.loginForm.get('psw')?.errors && this.loginForm.get('psw')?.touched "><p class="text-dander">invalid password</p></div>
+
                             <div class="flex-sb-m w-full p-b-30">
                                 <div class="contact100-form-checkbox">
                                     <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
