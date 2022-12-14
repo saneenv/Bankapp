@@ -49,13 +49,19 @@ Html-View
 Angular Dierectives
 --------------------
 
+to manage DOM in angular
+
 1-structural Dierectives -  to handle structured datas in view of a component
 
     -ngfor - can directly apply in html to access elements from array
 
     -ngIf - can directly apply in html to access elements from array
 
-    
+2-component Dierective - 
+
+3-Atribute Dierective 
+
+    - ngClass
 
 
 Form Validation In Angular
@@ -93,4 +99,32 @@ Validate Form Model
 
             if(this.registerForm.get('uname')?.errors){    //*ngIf
 
-            }        
+            }      
+
+
+Local storage in angular
+--------------------------
+
+
+-store localStorage.setItem()
+-access  localStorage.getItem()
+-delete  localStorage.removeItem() 
+
+parent child communication in angular
+---------------------------------------------
+
+
+
+
+
+
+
+Date in Angular
+----------------
+
+Date  - class
+
+-create an object of class Date to access Date and Time
+
+
+

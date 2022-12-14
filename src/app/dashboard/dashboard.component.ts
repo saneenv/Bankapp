@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -8,6 +9,10 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+
+  dateandtime:any 
+
+  acno:any
   // acno=''
   // psw=''
   // amnt=''
@@ -18,9 +23,9 @@ export class DashboardComponent {
 
   user=''
 
-constructor(private ds:DataService,private fb:FormBuilder) { 
+constructor(private ds:DataService,private fb:FormBuilder , private router:Router) { 
 
-
+  this.dateandtime=new Date()
 
   // access username
   this.user=this.ds.currentuser
@@ -40,6 +45,10 @@ withdrawForm=this.fb.group({
 })
 
 ngOnInit(): void{
+  if(!localStorage.getItem('currentacno')){
+    alert('please login first')
+    this.router.navigateByUrl('')
+  }
 
 }
 
@@ -86,6 +95,17 @@ withdraw(){
 else{
   alert('invalid')
 }
+}
+logout(){
+  localStorage.removeItem('currentuser')
+  localStorage.removeItem('currentacno')
+  this.router.navigateByUrl('')
+}
+
+
+  deleteconfirm(){
+    this.acno=JSON.parse(localStorage.getItem('currentacno') || "")
   }
 }
+
 
