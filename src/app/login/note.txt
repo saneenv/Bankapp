@@ -113,9 +113,18 @@ Local storage in angular
 parent child communication in angular
 ---------------------------------------------
 
+@Input - parent to child data sharing
+
+@Output - child to parent data sharing
+
+datas only share via selector of component
 
 
+User defined event creation in angular
+---------------------------------------
 
+EventEmitter (from angular core)  - class used to create events
+emit()                            - to start the event
 
 
 
@@ -125,6 +134,66 @@ Date in Angular
 Date  - class
 
 -create an object of class Date to access Date and Time
+
+Angular Pipe
+-------------
+
+to transform data into another format
+        EG: date Pipe
+
+
+        [npm i(to install the package)]
+
+
+CLIENT SERVER INTEGRATION
+-------------------------
+-------------------------
+
+http request creation
+---------------------
+
+HttpClientModule    -Module
+HttpClient          -class
+
+
+Asynchronous request in Ts
+--------------------------
+
+js - promise  --resolve   then()
+              --reject     catch()
+
+ts - observable --resolve  subscribe()
+                --reject    catch() 
+
+
+Rxjs - library used to solve asynchrnous code in ts
+
+(reactive extension for js)
+
+
+append token in headers of http
+-------------------------------
+
+create header
+
+    HttpHeaders - class to create header object
+
+      let headers=new HttpHeaders()
+
+append token in header object
+
+            headers.append('access-token',token)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

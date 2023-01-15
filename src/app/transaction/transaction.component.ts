@@ -11,11 +11,18 @@ acno:any
 transaction:any
   constructor(private ds:DataService){
 
-    this.acno=this.ds.currentacno
+    this.acno=JSON.parse(localStorage.getItem('currentacno') || "")
 
-    this.transaction=this.ds.gettransaction(this.acno)
+    this.ds.gettransaction(this.acno).subscribe((result:any)=>{
+      this.transaction=result.message
+          console.log(this.transaction);
 
-    console.log(this.transaction);
+    },
+    (result:any)=>{
+      alert(result.error.message)
+    }
+    )
+
     
     //  for(i of transaction)
     

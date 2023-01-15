@@ -11,7 +11,7 @@
 
 <div class="text-end p-3"> <button (click)="logout()" class="btn btn-outline-danger">log out</button></div>
 <div class="text-end p-3"> <button (click)="deleteconfirm()"  class="btn btn-outline-danger">Delete</button></div>
-<app-deleteconfirm [item]="acno"></app-deleteconfirm>
+<app-deleteconfirm (onDelete)="delete($event)" (onCancel)="oncancel()" [item]="acno"></app-deleteconfirm>
 
                 <div [ngClass]="acno?'style':''"
                  class="row">

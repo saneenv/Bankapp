@@ -38,18 +38,27 @@ export class LoginComponent {
 
     if(this.loginForm.valid){
     
-    const result=this.ds.login(acno,psw)
-    if (result){
-      alert('login success')
+    this.ds.login(acno,psw).subscribe((result:any)=>{
+
+
+
+     localStorage.setItem('currentacno',JSON.stringify(result.currentAcno))
+     localStorage.setItem('currentuser',JSON.stringify(result.currentUser))
+     localStorage.setItem('token',JSON.stringify(result.token))
+
+
+      alert(result.message)
+
       this.router.navigateByUrl('dashboard')
 
+    },
+    result=>{
+      alert(result.error.message)
     }
-    else{
-      alert('incorrect username or password')
-    }
+    )
   }
   else{
-    alert('invalid login')
+    alert('invalid form')
   }
 }  
 }
